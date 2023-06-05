@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GW2 Gem Alert</title>
+</head>
+<body>
+    <div>
+        <div class="coins">
+            <label for="gold">Gold</label>
+            <input id="gold" type="number" value="28" minlength="1" maxlength="100" onChange="calculateCoins()">
+            <label for="silver">Silver</label>
+            <input id="silver" type="number" value="00" minlength="2" maxlength="2" onChange="calculateCoins()">
+            <label for="copper">Copper</label>
+            <input id="copper" type="number" value="00" minlength="2" maxlength="2" onChange="calculateCoins()">
+        </div>
+        <br />
+        <div class="result">
+            <div>
+                1 gem = <span id="coins-per-gem">0</span> coins
+            </div>
+            <div>
+                100 gem = <span id="coins-per-100gems">0</span> coins
+            </div>
+            <div>
+                <span id="coins">0</span> coins gives = <span id="quantity">0</span> gems
+            </div>
+            <div id="cumpara" style="display: none; color: red;">
+                ATENTIE: CUMPARA !!
+                <div id="iFrame"></div>
+            </div>
+        </div>
+        <br />
+        <div>
+            <a href="https://codepen.io/denisam/pen/MWYGxMb">CodePen Link</a>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        let showAlerta = true;
+
+        function sendGet(url, async = false) {
+            var http = new XMLHttpRequest();
+            http.open('GET', url, async);
+            http.send();
+
+            return http.responseText;
+        }
+
+        function validateInput(input) {
+            if (input.value.length < 2) {
+                input.value = `0${input.value}`;
+            } else if (input.value.length > 2) {
+                input.value = `99`;
+            }
+        }
+
+        function getCoinsPerGem(coinsPerGem) {
+            const coinsPerGemStr = coinsPerGem.toString();
+            const tempCopper = coinsPerGemStr.substring(coinsPerGemStr.length - 2, coinsPerGemStr.length);
+            const tempSilver = coinsPerGemStr.substring(coinsPerGemStr.length - 4, coinsPerGemStr.length - 2);
+            const tempGold = coinsPerGemStr.substring(coinsPerGemStr.length - 6, coinsPerGemStr.length - 4);
+
+            return `${tempGold} ${tempSilver} ${tempCopper}`;
+        }
+
+        function calculateCoins() {
+            validateInput(document.getElementById("silver"));
+            validateInput(document.getElementById("copper"));
+
+            const gold = document.getElementById("gold").value;
+            const silver = document.getElementById("silver").value;
+            const copper = document.getElementById("copper").value;
+            const coins = `${gold}${silver}${copper}`;
+
+            const result = JSON.parse(sendGet('https://api.guildwars2.com/v2/commerce/exchange/coins?quantity=' + coins));
+
+            document.getElementById("coins-per-gem").innerHTML = getCoinsPerGem(result.coins_per_gem);
+            document.getElementById("coins-per-100gems").innerHTML = getCoinsPerGem(result.coins_per_gem * 100);
+            document.getElementById("quantity").innerHTML = result.quantity;
+            document.getElementById("coins").innerHTML = `${gold} g ${silver} s ${copper} c`;
+
+            console.log(result.quantity, result.coins_per_gem, coins / 100);
+
+            if (result.quantity >= 100 && result.coins_per_gem <= (coins / 100)) {
+                document.getElementById("cumpara").style.display = 'block';
+
+                if (showAlerta) {
+                    document.getElementById("iFrame").innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/VlBIrR_tu5g?autoplay=1&loop=1&playlist=VlBIrR_tu5g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+					setTimeout(() => console.log('ATENTIE: CUMPARA !!'), 1500);
+                }
+
+                showAlerta = false;
+            } else {
+                document.getElementById("cumpara").style.display = 'none';
+                showAlerta = true;
+            }
+        }
+
+        calculateCoins();
+        setInterval(calculateCoins, 60 * 1000);
+    </script>
+</body>
+</html>
