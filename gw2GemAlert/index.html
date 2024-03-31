@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>GW2 Gem Alert</title>
+    <script defer src="../nav-bar.js"></script>
 </head>
 <body>
-    <div>
+    <nav-bar></nav-bar>
+
+    <main>
         <div class="coins">
             <label for="gold">Gold</label>
             <input id="gold" type="number" value="28" minlength="1" maxlength="100" onChange="calculateCoins()">
@@ -36,7 +39,7 @@
         <div>
             <a href="https://codepen.io/denisam/pen/MWYGxMb">CodePen Link</a>
         </div>
-    </div>
+    </main>
 
     <script type="text/javascript">
         let showAlerta = true;

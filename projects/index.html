@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>DarkAng3L's Projects</title>
+    <script defer src="../nav-bar.js"></script>
+    <script defer src="project-item.js"></script>
+    <style>
+
+    </style>
 </head>
 <body>
-    <nav>
-        <a href="/">Go back</a>
-        |
-        <a href="/gw2GemAlert">GW2 Gem Alert</a>
-        |
-        <a href="/about">About Page</a>
-    </nav>
-    <p>Description:</p>
-    <p>DarkAng3L's Projects</p>
+    <nav-bar></nav-bar>
+
+    <main>
+        <p>Description:</p>
+        <p>DarkAng3L's Projects:</p>
+        <ul>
+            <project-item checked>GW2 Gem Alert</project-item>
+            <project-item checked>Web-Components Template<span slot="description">Test description</span></project-item>
+        </ul>
+    </main>
 </body>
 </html>
