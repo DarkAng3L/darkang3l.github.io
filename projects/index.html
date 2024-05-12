@@ -5,6 +5,8 @@
     <title>DarkAng3L's Projects</title>
     <script defer src="../nav-bar.js"></script>
     <script defer src="project-item.js"></script>
+<!--    <script defer type="module" crossorigin src="react-project/index.js"></script>-->
+    <script defer type="module" crossorigin src="react-project/index_web-component.js"></script>
     <style>
 
     </style>
@@ -18,7 +20,15 @@
         <ul>
             <project-item checked>GW2 Gem Alert</project-item>
             <project-item checked>Web-Components Template<span slot="description">Test description</span></project-item>
+            <project-item checked>React app in a Web-Component Template</project-item>
+            <project-item>Need new idea and time for it...</project-item>
         </ul>
+
+<!--        <iframe sandbox="allow-scripts" allow-scripts src="./react-project/dist/index.html" frameborder="0"></iframe>-->
+<!--        ^^ Avoid index.html file in build output. This means having to import assets manually...-->
+<!--        <div id="root"></div>-->
+<!--        ^^ this does nothing-->
+        <react-project></react-project>
     </main>
 </body>
 </html>
