@@ -1,0 +1,48 @@
+/*
+*   Kevin Powell
+*   https://youtu.be/2lyDv0wOQuQ
+*   https://youtu.be/cCAtD_BAHNw
+*/
+
+*, *::before, *::after {
+    box-sizing: border-box; /* Switch to border-box for box-sizing. */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit; /* Get rid of all font sizes and heights */
+}
+
+html {
+    color-scheme: dark light; /* Default dark */
+    hanging-punctuation: first last; /* Not supported in Chrome */
+}
+
+body {
+    margin: 0; /* Remove the tiny space around the edge of the page */
+    min-height: 100vh;
+}
+
+/* Media responsive */
+img, picture, svg, video, canvas, audio, iframe, embed, object {
+    display: block; /* Switch display mode to block, since that's what we usually want for images. */
+    vertical-align: middle;  /* If you override, and make an image inline, it's likely you'll want middle vertical alignment. */
+    max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+}
+
+p {
+    max-width: 75ch;
+    text-wrap: pretty; /* Prevents orphans on lines */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    :has(:target) {
+        scroll-behavior: smooth;
+        scroll-padding-top: 3rem;
+    }
+}
