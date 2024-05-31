@@ -31,6 +31,7 @@ fetch(`${reactProjectPath}/index.html`)
           // script.src = s.src.replace('/assets/', `${reactProjectPath}/assets/`);
           script.src = s.src;
           script.defer = true;
+          script.type = 'module';
 
           script.onload = function() {
             // Script is loaded and ready to execute
