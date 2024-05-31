@@ -13,6 +13,8 @@ navTemplate.innerHTML = `
     |
     <a href="/gw2GemAlert">GW2 Gem Alert</a>
     |
+    <a href="/resume">Resume page</a>
+    |
     <a href="/about">About page</a>
     |
     <span class="end">
