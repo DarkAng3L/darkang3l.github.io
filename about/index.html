@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - DarkAng3L</title>
+    <link rel="stylesheet" href="../index.css" />
+    <script defer src="../nav-bar.js"></script>
+    <script defer src="../projects/form-group.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <nav-bar>
+        DarkAng3L
+        <span slot="end">© 2023</span>
+    </nav-bar>
+
+    <main>
+        <div class="content-card">
+            <h1>About me</h1>
+            <p>
+                Welcome to my digital corner. I'm passionate about building web experiences that are not only functional
+                but also visually stunning.
+                This website serves as a playground for my projects and ideas.
+            </p>
+            <p>
+                Feel free to explore and let me know what you think!
+            </p>
+        </div>
+
+        <div class="content-card feedback-section">
+            <h2>Feedback</h2>
+            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you for your feedback!');">
+                <form-group value-missing-message="Please tell me what you think!">
+                    <label for="feedback">What do you think about this website?</label>
+                    <textarea id="feedback" name="feedback" required placeholder="Your thoughts here..."></textarea>
+                </form-group>
+                <button type="submit">Send Feedback</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>DarkAng3L's Projects</title>
     <script defer src="../nav-bar.js"></script>
     <script defer src="project-item.js"></script>
-<!--    <script defer type="module" crossorigin src="react-project/index.js"></script>-->
+    <!--    <script defer type="module" crossorigin src="react-project/index.js"></script>-->
     <script defer type="module" crossorigin src="react-project/index_web-component.js"></script>
     <style>
 
     </style>
 </head>
+
 <body>
-    <nav-bar></nav-bar>
+    <nav-bar>
+        DarkAng3L
+        <span slot="end">© 2023</span>
+    </nav-bar>
 
     <main>
         <p>Description:</p>
@@ -28,11 +33,12 @@
             <project-item>Create an Expo app and play around with it</project-item>
         </ul>
 
-<!--        <iframe sandbox="allow-scripts" allow-scripts src="./react-project/dist/index.html" frameborder="0"></iframe>-->
-<!--        ^^ Avoid index.html file in build output. This means having to import assets manually...-->
-<!--        <div id="root"></div>-->
-<!--        ^^ this does nothing-->
+        <!--        <iframe sandbox="allow-scripts" allow-scripts src="./react-project/dist/index.html" frameborder="0"></iframe>-->
+        <!--        ^^ Avoid index.html file in build output. This means having to import assets manually...-->
+        <!--        <div id="root"></div>-->
+        <!--        ^^ this does nothing-->
         <react-project></react-project>
     </main>
 </body>
+
 </html>
